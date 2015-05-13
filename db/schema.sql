@@ -13,6 +13,6 @@ CREATE TABLE IF NOT EXISTS orders (
 	email TEXT,
 	shirt_id INTEGER,
 	quantity INTEGER,
-	status TEXT,
+	status TEXT DEFAULT "purchased",
 	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
