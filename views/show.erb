@@ -6,23 +6,48 @@
 	<a href="/shirts">Home</a>
 </head>
 <body>
-	<h1><%=shirts[0].style%></h1>
-		Color: <%=shirts[0].color%><br>
-		In Stock: <%=shirts[0].instock%><br>
-		Price: $<%=shirts[0].price%><br>
-		<img src="<%=shirts[0].shirt_image%>">
+	<% shirts.each_with_index do |shirt, index| %>
+	<div class="shirtdiv hidden" id="shirt<%= index %>">
+		<h1><%=shirt.style%></h1>
+		Color:
+		<select onchange="switchshirt(<%= index %>)">
+			<% shirts.each_with_index do |innershirt, innerindex| %>
+			<option value=<%= innerindex %> <%= "selected" if innerindex == index %>>
+				<%=innershirt.color%>
+			</option>
+			<% end %>
+		</select>
+		<br>
+		In Stock: <%=shirt.instock%><br>
+		Price: $<%=shirt.price%><br>
+		<img src="<%=shirt.shirt_image%>">
 		<form action="/orders"  method="POST">
 		<input type="text" name="email" value="" required>
-		<input type="hidden" name="shirt_id" value="<%=shirts[0].id%>">
-		<input type="hidden" name="price" value="<%=shirts[0].price%>">
+		<input type="hidden" name="shirt_id" value="<%=shirt.id%>">
+		<input type="hidden" name="price" value="<%=shirt.price%>">
 		<select name="qty">
-			<% for i in 0..shirts[0].instock.to_i %>
-			<option><%= i %></option> 
+			<% for i in 1..shirt.instock.to_i %>
+			<option><%= i %></option>
 			<%end%>
 		</select>
 			<button>Buy</button></br>
 			
 		</form>
+	</div>
+	<% end %>
 
+	<script>
+		var shirtdivs = document.getElementsByClassName("shirtdiv");
+		shirtdivs[0].className = "shirtdiv";
+		for (i=0;i<shirtdivs.length;i++) {
+			console.log(shirtdivs[i].id);
+		}
+
+		function switchshirt(index) {
+			var newshowid = shirtdivs[index].querySelector('select').value;
+			shirtdivs[index].className = "shirtdiv hidden";
+			shirtdivs[newshowid].className = "shirtdiv";
+		}
+	</script>
 </body>
 </html>
