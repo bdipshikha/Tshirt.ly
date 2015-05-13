@@ -5,6 +5,7 @@
     <title>Orders</title>
 </head>
 <body>
+    <a href="/admin">Admin</a>
    <div class="orders"></div>
    <ul class="list">
     <% orders.each do |order| %>
@@ -15,10 +16,9 @@
         <%= order.status %>
         <%= order.email %>
         
-        <button class="cancel">Cancel Order</button>
        <% end %>
+        <button class="cancel">Cancel Order</button>
     </li>
     </ul>
-    <a href="/admin">Admin</a>
 </body>
 </html>
