@@ -47,7 +47,7 @@ put '/shirts/:id' do
     
     shirt.update({style: style, color: color, price: price, shirt_image: shirt_image})
     
-    redirect('/shirts')
+    redirect('/admin')
 end
         
         delete '/shirts/:id' do 
