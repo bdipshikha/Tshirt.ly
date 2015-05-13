@@ -5,20 +5,25 @@
     <title>Orders</title>
 </head>
 <body>
-   <div class="orders"></div>
+<a href="/admin">Admin</a>
+   <div class="orders">
    <ul class="list">
     <% orders.each do |order| %>
     <li>
+        hello
         <%= order.id %>
         <%= order.shirt_id %>
         <%= order.quantity %>
         <%= order.status %>
         <%= order.email %>
+
         
         <button class="cancel">Cancel Order</button>
        <% end %>
     </li>
+    
     </ul>
-    <a href="/admin">Admin</a>
+    
+    </div>
 </body>
 </html>

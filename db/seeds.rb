@@ -1,4 +1,5 @@
 require_relative '../models/tshirts'
+require_relative '../models/orders'
 
 
 Shirt.create({
