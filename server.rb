@@ -30,9 +30,9 @@ post '/shirts' do
     style = params[:style]
     color = params[:color]
     price = params[:price]
-    shirt_image = params[:image]
+    shirt_image = params[:shirt_image]
     
-    Shirt.create({style: style, color: color, price: price, shirt_image: image})
+    Shirt.create({style: style, color: color, price: price, shirt_image: shirt_image})
     
     redirect('/shirts')
 end
@@ -43,9 +43,9 @@ put '/shirts/:id' do
     style = params[:style]
     color = params[:color]
     price = params[:price]
-    shirt_image = params[:image]
+    shirt_image = params[:shirt_image]
     
-    shirt.update({style: style, color: color, price: price, shirt_image: image})
+    shirt.update({style: style, color: color, price: price, shirt_image: shirt_image})
     
     redirect('/shirts')
 end
