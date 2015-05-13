@@ -40,19 +40,18 @@ post '/shirts' do
     shirt_image = params[:shirt_image]
     
     Shirt.create({style: style, color: color, price: price, instock: instock, shirt_image: shirt_image})
-    
     redirect('/admin')
 end
 
 put '/shirts/:id' do 
     shirt = Shirt.find(params[:id])
     
-    style = params[:style]
-    color = params[:color]
     price = params[:price]
+    instock = params[:instock]
+    
     shirt_image = params[:shirt_image]
     
-    shirt.update({style: style, color: color, price: price, shirt_image: shirt_image})
+    shirt.update({price: price, shirt_image: shirt_image, instock: instock})
     
     redirect('/admin')
 end
