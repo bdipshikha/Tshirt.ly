@@ -1,6 +1,11 @@
 require 'sinatra'
 require 'active_record'
 require_relative 'models/tshirts'
+require_relative 'models/orders'
+
+get '/orders' do
+    erb :orders, locals: {orders: orders} 
+end
 
 get '/admin' do
     shirts = Shirt.all
