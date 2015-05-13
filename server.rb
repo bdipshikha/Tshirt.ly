@@ -5,11 +5,11 @@ require_relative 'models/tshirts'
 require_relative 'models/orders'
 
 post '/cancel_order' do
-    order = Order.find(params[:id])  
-    shirt = Shirt.find(params[:shirt_id])
+    order = Order.find(params[:order_id].to_i)
+    shirt = Shirt.find(params[:shirt_id].to_i)
 
 
-    qty = shirt.instock + params[:qty]
+    qty = shirt.instock + params[:quantity].to_i
     shirt.update({instock: qty})
     
     order.destroy
@@ -102,6 +102,8 @@ put '/shirts/:id' do
     shirt_image = params[:shirt_image]
 
     shirt.update({price: price, shirt_image: shirt_image, instock: instock})
+
+
 
     redirect('/admin')
 end
