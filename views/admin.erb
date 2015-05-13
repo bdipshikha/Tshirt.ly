@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+
+<ul>
+<% shirts.each do |shirt| %>
+  <li>shirt.style - shirt.color
+    <form method="POST" action="/shirts/<%= shirt.id %>">
+      <input type="hidden" name="_method" value="PUT">
+      <input type="text" name="instock" value="<%= shirt.instock %>">
+      <input type="text" name="shirt_image" value="<%= shirt.shirt_image %>">
+      <button>update</button>
+    </form>
+    <form method="POST" action="/shirts/<%= shirt.id %>">
+      <input type="hidden" name="_method" value="DELETE">
+      <button>delete</button>
+    </form>
+  </li>
+<% end %>
+</ul>
+</body>
+</html>
