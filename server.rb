@@ -9,6 +9,18 @@ get '/orders' do
     erb :orders, locals: {orders: orders} 
 end
 
+post '/orders/:id' do
+    id =  params[:id]
+    qty = params[:qty]
+    puts qty
+
+    shirt = Shirt.find(id)
+   
+    new_instock = shirt.instock - qty
+    Shirt.update({instock: new_instock}) 
+    redirect("/shirts")
+end
+
 get '/admin' do
     shirts = Shirt.all
     erb :admin, locals: {shirts: shirts}
@@ -51,7 +63,7 @@ post '/orders' do
     # created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 
     order = Order.create({email: params[:email], shirt_id: params[:shirt_id], quantity: params[:quantity]});
-    redirect '/receipt/'
+    redirect "/receipt/#{order.id}"
 end
 
 
