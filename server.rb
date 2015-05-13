@@ -18,6 +18,10 @@ get '/' do
     redirect '/shirts'
 end
 
+get '/receipt' do
+    erb :receipt
+end
+
 get '/shirts' do 
     shirts = Shirt.all
     erb :index, locals: {shirts: shirts}

@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel = "stylesheet" type="text/css" href = "/css/styles.css">
 	<title></title>
 </head>
 <body>
 	<h1><%=shirt.style%></h1>
-		<%=shirt.color%>
-		<%=shirt.instock%>
-		<%=shirt.price%>
-		<%=shirt.shirt_image%>
-
-
-
-		<form action="/shirts/<%=shirt.id%>" method="POST">
-			<input type="hidden" name="_method" value="PUT">
+		Color: <%=shirt.color%><br>
+		Qty: <%=shirt.instock%><br>
+		Price: $<%=shirt.price%><br>
+		<img src="<%=shirt.shirt_image%>">
+		<form action="/orders" method="POST">
+		
+			
+			<button>Buy</button>
 		</form>
 
 </body>
