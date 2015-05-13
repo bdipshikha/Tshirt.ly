@@ -38,7 +38,7 @@ With a small group, build a t-shirt inventory tracker.
 - The admin user can add t-shirts, remove t-shirts and update t-shirts. Each t-shirt for sale has a quantity avaiable, a price, and an image url. (all t-shirts are one-size-fits-all)
 - The admin user can also see a list of all past purchases created by their customers.
 
-
+## ERD: 
 
 ![ERD diagram](public/images/ERD for Tshirt.ly.png)
 
