@@ -6,10 +6,10 @@
 </head>
 <body>
   <h1>Thank you for your purchase</h1>
-  <img src="<%= image_url %>">
-  <p>style — <%= style %></p>
-  <p>color — <%= color %></p>
-  <p>quantity — <%= qty %></p>
-  <p>total — <%= total %></p>
+  <img src="<%= shirt.shirt_image %>">
+  <p>style — <%= shirt.style %></p>
+  <p>color — <%= shirt.color %></p>
+  <p>quantity — <%= order.quantity %></p>
+  <p>total — $<%= printf("%.2f",order.quantity.to_i * shirt.price.to_i) %></p>
 </body>
 </html>
