@@ -75,13 +75,6 @@ get '/shirts/:id/edit' do
 end
 
 post '/orders' do
-    # id INTEGER PRIMARY KEY,
-    # email TEXT,
-    # shirt_id INTEGER,
-    # quantity INTEGER,
-    # status TEXT,
-    # created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-
     order = Order.create({email: params[:email], shirt_id: params[:shirt_id], quantity: params[:qty]});
     redirect "/receipt/#{order.id}"
 end
