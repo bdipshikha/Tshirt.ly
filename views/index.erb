@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel = "stylesheet" type="text/css" href = "/css/styles.css">
+
 	<title>EPSKD Tshirt Store</title>
+
 </head>
 <body>
 	<ul>
-	
+	<% shirts.each do |shirt| %>
 	<li>
-	<a href = "/shirts/<%= shirts.id %>">
-	 <img src="<%= shirts.image %>"></a>
+	<a href = "/shirts/<%= shirt.id %>">
+	 <img src="<%= shirt.shirt_image %>"></a>
+	<% end %>
 
 </body>
 </html>

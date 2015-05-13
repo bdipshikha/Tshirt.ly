@@ -16,6 +16,12 @@ get '/shirts' do
     erb :index, locals: {shirts: shirts}
 end
 
+get '/shirts/:id' do
+    id = params[:id]
+    indv_shirt = Shirt.find(id)
+    erb :show, locals: {shirt: indv_shirt}
+end
+
 get '/shirts/new' do
     erb :new
 end
