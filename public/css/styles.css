@@ -9,6 +9,10 @@ img {
 	background-color: white;
 }
 
+.hidden {
+  display: none;
+}
+
 li {
     width: 33%;
     float: left;

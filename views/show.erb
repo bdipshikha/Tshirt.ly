@@ -7,23 +7,56 @@
 	</nav>
 </head>
 <body>
-	<h1><%=shirts[0].style%></h1>
-		Color: <%=shirts[0].color%><br>
-		In Stock: <%=shirts[0].instock%><br>
-		Price: $<%=shirts[0].price%><br>
-		<img src="<%=shirts[0].shirt_image%>">
-		<form action="/orders"  method="POST">
-		<input type="text" name="email" value="" required>
-		<input type="hidden" name="shirt_id" value="<%=shirts[0].id%>">
-		<input type="hidden" name="price" value="<%=shirts[0].price%>">
-		<select name="qty">
-			<% for i in 0..shirts[0].instock.to_i %>
-			<option><%= i %></option> 
-			<%end%>
+	<% shirts.each_with_index do |shirt, index| %>
+	<div class="shirtdiv hidden" id="shirt<%= index %>">
+		<h1><%=shirt.style%></h1>
+		Color:
+		<select onchange="switchshirt(<%= index %>)">
+			<% shirts.each_with_index do |innershirt, innerindex| %>
+			<option value=<%= innerindex %> <%= "selected" if innerindex == index %>>
+				<%=innershirt.color%>
+			</option>
+			<% end %>
 		</select>
-			<button>Buy</button></br>
+		<br>
+		In Stock: <%=shirt.instock%><br>
+		Price: $<%=shirt.price%><br>
+		<img src="<%=shirt.shirt_image%>">
+		<form action="/orders"  method="POST">
+		<ul class="purchaseformlist">
+		<label for="email">email</label>
+		<input type="text" name="email" value="" required>
+		<input type="hidden" name="shirt_id" value="<%=shirt.id%>">
+		<input type="hidden" name="price" value="<%=shirt.price%>">
+		<label for="qty">qty</label>
+		
+			<select name="qty">
+				<% for i in 1..shirt.instock.to_i %>
+				<option><%= i %></option>
+				<%end%>
+			</select>
+		
+		<button>Buy</button></br>
 			
 		</form>
+	</div>
+	<% end %>
 
+	<script>
+		var shirtdivs = document.getElementsByClassName("shirtdiv");
+		// display last shirt on load, because that's the image that shows in the index page
+		shirtdivs[shirtdivs.length-1].className = "shirtdiv";
+
+		function switchshirt(index) {
+			// grab the <select> that triggered us
+			var select = shirtdivs[index].querySelector('select');
+			// hide the current shirt
+			shirtdivs[index].className = "shirtdiv hidden";
+			// show the newly selected shirt
+			shirtdivs[select.value].className = "shirtdiv";
+			// set the <select> that we just left back to it's initial value
+			select.value = index;
+		}
+	</script>
 </body>
 </html>
