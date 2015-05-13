@@ -11,10 +11,9 @@
 	<% shirts.each do |shirt| %>
 	<li>
 	<a href = "/shirts/<%= shirt.id %>">
-	 <img src="<%= shirt.shirt_image %>"></a></br>
-	 <%= shirt.style %>
+	 <img src="<%= shirt.shirt_image %>"></a>
+	 <%
 	<% end %>
-	</li>
-	</ul>
+
 </body>
 </html>
