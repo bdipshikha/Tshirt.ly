@@ -3,8 +3,8 @@ require 'active_record'
 require_relative 'models/tshirts'
 
 get '/admin' do
-    shirt = Shirt.all
-    erb :index, locals: {shirt: shirt}
+    shirts = Shirt.all
+    erb :admin, locals: {shirts: shirts}
 end
 
 get '/' do 
