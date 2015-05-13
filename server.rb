@@ -3,8 +3,8 @@ require 'active_record'
 require_relative 'models/tshirts'
 
 get '/admin' do
-    shirt = Shirt.all
-    erb :index, locals: {shirt: shirt}
+    shirts = Shirt.all
+    erb :admin, locals: {shirts: shirts}
 end
 
 get '/' do 
@@ -31,6 +31,10 @@ post '/shirts' do
     color = params[:color]
     price = params[:price]
     shirt_image = params[:image]
+    
+    Shirt.create({style: style, color: color, price: price, shirt_image: image})
+    
+    redirect('/shirts')
 end
 
 put '/shirts/:id' do 
@@ -40,6 +44,10 @@ put '/shirts/:id' do
     color = params[:color]
     price = params[:price]
     shirt_image = params[:image]
+    
+    shirt.update({style: style, color: color, price: price, shirt_image: image})
+    
+    redirect('/shirts')
 end
         
         delete '/shirts/:id' do 
