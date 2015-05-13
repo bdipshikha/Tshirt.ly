@@ -34,7 +34,7 @@ post '/shirts' do
     
     Shirt.create({style: style, color: color, price: price, shirt_image: shirt_image})
     
-    redirect('/shirts')
+    redirect('/admin')
 end
 
 put '/shirts/:id' do 
