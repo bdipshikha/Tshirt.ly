@@ -1,5 +1,5 @@
 require 'sinatra'
-require 'ActiveRecord'
+require 'active_record'
 require_relative 'models/tshirts'
 
 get '/admin' do
