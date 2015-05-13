@@ -59,6 +59,6 @@ end
 delete '/shirts/:id' do 
     shirt = Shirt.find(params[:id])
     shirt.destroy
-    redirect('/shirts')
+    redirect('/admin')
 end
 
