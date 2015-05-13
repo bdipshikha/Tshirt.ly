@@ -22,15 +22,20 @@
 		Price: $<%=shirt.price%><br>
 		<img src="<%=shirt.shirt_image%>">
 		<form action="/orders"  method="POST">
+		<ul class="purchaseformlist">
+		<label for="email">email</label>
 		<input type="text" name="email" value="" required>
 		<input type="hidden" name="shirt_id" value="<%=shirt.id%>">
 		<input type="hidden" name="price" value="<%=shirt.price%>">
-		<select name="qty">
-			<% for i in 1..shirt.instock.to_i %>
-			<option><%= i %></option>
-			<%end%>
-		</select>
-			<button>Buy</button></br>
+		<label for="qty">qty</label>
+		
+			<select name="qty">
+				<% for i in 1..shirt.instock.to_i %>
+				<option><%= i %></option>
+				<%end%>
+			</select>
+		
+		<button>Buy</button></br>
 			
 		</form>
 	</div>
