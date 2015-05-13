@@ -38,15 +38,18 @@
 
 	<script>
 		var shirtdivs = document.getElementsByClassName("shirtdiv");
-		shirtdivs[0].className = "shirtdiv";
-		for (i=0;i<shirtdivs.length;i++) {
-			console.log(shirtdivs[i].id);
-		}
+		// display last shirt on load, because that's the image that shows in the index page
+		shirtdivs[shirtdivs.length-1].className = "shirtdiv";
 
 		function switchshirt(index) {
-			var newshowid = shirtdivs[index].querySelector('select').value;
+			// grab the <select> that triggered us
+			var select = shirtdivs[index].querySelector('select');
+			// hide the current shirt
 			shirtdivs[index].className = "shirtdiv hidden";
-			shirtdivs[newshowid].className = "shirtdiv";
+			// show the newly selected shirt
+			shirtdivs[select.value].className = "shirtdiv";
+			// set the <select> that we just left back to it's initial value
+			select.value = index;
 		}
 	</script>
 </body>
