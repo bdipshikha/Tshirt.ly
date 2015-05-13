@@ -16,7 +16,7 @@ get '/' do
     redirect '/shirts'
 end
 
-get '/receipt' do
+get '/receipt/:id' do
     erb :receipt
 end
 
@@ -38,6 +38,18 @@ end
 get '/shirts/:id/edit' do
     shirt = Shirt.find(params[:id])
     erb :edit, locals: {item: item}
+end
+
+post '/orders' do
+    # id INTEGER PRIMARY KEY,
+    # email TEXT,
+    # shirt_id INTEGER,
+    # quantity INTEGER,
+    # status TEXT,
+    # created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+
+    order = Order.create({email: params[:email], shirt_id: params[:shirt_id], quantity: params[:quantity]});
+    redirect '/receipt/'
 end
 
 
