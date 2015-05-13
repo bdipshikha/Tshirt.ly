@@ -58,3 +58,13 @@ Shirt.create({
 	price: "1.99",
 	shirt_image: "http://t-shirts.classb.com/image/47512.495.shirt.Front.jpg?1233922899"
 })
+
+
+
+Order.create({
+	quantity: "10"
+	status: "shipped"
+	email: "sajksdjkdsjk@yahoo.com"
+	})
+
+
