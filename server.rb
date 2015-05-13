@@ -4,7 +4,20 @@ require_relative 'models/tshirts'
 require_relative 'models/orders'
 
 get '/orders' do
+    
     erb :orders, locals: {orders: orders} 
+end
+
+post '/orders/:id' do
+    id =  params[:id]
+    qty = params[:qty]
+    puts qty
+
+    shirt = Shirt.find(id)
+   
+    new_instock = shirt.instock - qty
+    Shirt.update({instock: new_instock}) 
+    redirect("/shirts")
 end
 
 get '/admin' do
