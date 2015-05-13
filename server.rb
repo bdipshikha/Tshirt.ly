@@ -16,6 +16,12 @@ get '/shirts' do
     erb :index, locals: {shirts: shirts}
 end
 
+get '/shirts/:id' do
+    id = params[:id]
+    indv_shirt = Shirt.find(id)
+    erb :show, locals: {shirt: indv_shirt}
+end
+
 get '/shirts/new' do
     erb :new
 end
@@ -33,8 +39,7 @@ post '/shirts' do
     instock = params[:instock]
     shirt_image = params[:shirt_image]
     
-    Shirt.create({style: style, color: color, price: price, shirt_image: shirt_image, instock: instock})
-    
+    Shirt.create({style: style, color: color, price: price, instock: instock, shirt_image: shirt_image})
     redirect('/admin')
 end
 
@@ -51,9 +56,9 @@ put '/shirts/:id' do
     redirect('/admin')
 end
         
-        delete '/shirts/:id' do 
-            shirt = Shirt.find(params[:id])
-            shirt.destroy
-            redirect('/shirts')
-        end
+delete '/shirts/:id' do 
+    shirt = Shirt.find(params[:id])
+    shirt.destroy
+    redirect('/shirts')
+end
 
