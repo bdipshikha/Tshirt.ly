@@ -8,16 +8,20 @@
     <a href="/admin">Admin</a>
    <div class="orders">
    <ul class="list">
-    <% orders.each_with_index do |order, id| %>
+    <% orders.each_with_index do |order, i| %>
     <li>
         <%= order.status %>
-        <%= shirts[id].style %>
-        <%= shirts[id].color %>
+        <%= shirts[i].style %>
+        <%= shirts[i].color %>
         <%= order.quantity %>
         <%= order.email %>
 
-        
+        <form method="POST" action="/cancel_order">
+        <input type="hidden" name="shirt_id" value="shirts[i].id">
+        <input type="hidden" value="order.quantity">
+        <input type="hidden" value="order.id"> 
         <button class="cancel">Cancel and Restock</button>
+    </form>
         <button class="ship">Ship</button>
        <% end %>
     </li>
