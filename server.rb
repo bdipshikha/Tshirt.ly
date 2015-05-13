@@ -24,18 +24,6 @@ get '/orders' do
     erb :orders, locals: {orders: orders, shirts: shirts}
 end
 
-# post '/orders/:id' do
-#     id =  params[:id]
-#     qty = params[:qty]
-#     puts qty
-
-#     shirt = Shirt.find(id)
-
-#     new_instock = shirt.instock - qty
-#     Shirt.update({instock: new_instock})
-#     redirect("/shirts")
-# end
-
 get '/admin' do
     shirts = Shirt.all
     erb :admin, locals: {shirts: shirts}
@@ -45,7 +33,9 @@ get '/' do
     redirect '/shirts'
 end
 
-get '/receipt/:id' do
+get '/receipt/:order_id' do
+
+    # shirts = Shirt.joins(:orders).where()
     erb :receipt
 end
 
