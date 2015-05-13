@@ -1,7 +1,7 @@
 require_relative '../models/tshirts'
 
 
-Tshirt.create({
+Shirt.create({
 	style: "V Neck",
 	color: "Red",
 	instock: "10",
@@ -9,7 +9,7 @@ Tshirt.create({
 	shirt_image: "http://www.365ist.com/images/detailed/645/bluemint-elvis-v-neck-t-shirt-red_(1).jpg"
 })
 
-Tshirt.create({
+Shirt.create({
 	style: "Crew Neck",
 	color: "White",
 	instock: "20",

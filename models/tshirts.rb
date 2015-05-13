@@ -1,4 +1,4 @@
 require_relative '../lib/connection'
 
-class Tshirt < ActiveRecord::Base
+class Shirt < ActiveRecord::Base
 end
