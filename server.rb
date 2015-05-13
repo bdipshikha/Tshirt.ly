@@ -1,15 +1,16 @@
 require 'sinatra'
 require 'active_record'
 require 'pry'
+require 'cgi'
 require_relative 'models/tshirts'
 require_relative 'models/orders'
 
 post '/cancel_order' do
-    order = Order.find(params[:id])  
-    shirt = Shirt.find(params[:shirt_id])
+    order = Order.find(params[:order_id].to_i)
+    shirt = Shirt.find(params[:shirt_id].to_i)
 
 
-    qty = shirt.instock + params[:qty]
+    qty = shirt.instock + params[:quantity].to_i
     shirt.update({instock: qty})
     
     order.destroy
@@ -49,15 +50,19 @@ get '/receipt/:id' do
     erb :receipt
 end
 
-get '/shirts' do
-    shirts = Shirt.all
+get '/shirts' do 
+
+    shirts = Shirt.group(:style)
+    # shirts = Shirt.all
     erb :index, locals: {shirts: shirts}
 end
 
-get '/shirts/:id' do
-    id = params[:id]
-    indv_shirt = Shirt.find(id)
-    erb :show, locals: {shirt: indv_shirt}
+get '/shirts/:style' do
+    style = CGI.unescape(params[:style])
+    shirts = Shirt.where(style: style)
+    # id = params[:id]
+    # indv_shirt = Shirt.find(id)
+    erb :show, locals: {shirts: shirts}
 end
 
 get '/shirts/new' do
@@ -70,13 +75,6 @@ get '/shirts/:id/edit' do
 end
 
 post '/orders' do
-    # id INTEGER PRIMARY KEY,
-    # email TEXT,
-    # shirt_id INTEGER,
-    # quantity INTEGER,
-    # status TEXT,
-    # created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-
     order = Order.create({email: params[:email], shirt_id: params[:shirt_id], quantity: params[:qty]});
     redirect "/receipt/#{order.id}"
 end
@@ -102,6 +100,8 @@ put '/shirts/:id' do
     shirt_image = params[:shirt_image]
 
     shirt.update({price: price, shirt_image: shirt_image, instock: instock})
+
+
 
     redirect('/admin')
 end

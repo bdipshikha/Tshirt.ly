@@ -6,17 +6,17 @@
 	<a href="/shirts">Home</a>
 </head>
 <body>
-	<h1><%=shirt.style%></h1>
-		Color: <%=shirt.color%><br>
-		In Stock: <%=shirt.instock%><br>
-		Price: $<%=shirt.price%><br>
-		<img src="<%=shirt.shirt_image%>">
+	<h1><%=shirts[0].style%></h1>
+		Color: <%=shirts[0].color%><br>
+		In Stock: <%=shirts[0].instock%><br>
+		Price: $<%=shirts[0].price%><br>
+		<img src="<%=shirts[0].shirt_image%>">
 		<form action="/orders"  method="POST">
 		<input type="text" name="email" value="" required>
-		<input type="hidden" name="shirt_id" value="<%=shirt.id%>">
-		<input type="hidden" name="price" value="<%=shirt.price%>">
+		<input type="hidden" name="shirt_id" value="<%=shirts[0].id%>">
+		<input type="hidden" name="price" value="<%=shirts[0].price%>">
 		<select name="qty">
-			<% for i in 0..shirt.instock.to_i %>
+			<% for i in 0..shirts[0].instock.to_i %>
 			<option><%= i %></option> 
 			<%end%>
 		</select>
