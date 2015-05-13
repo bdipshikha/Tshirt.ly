@@ -6,11 +6,11 @@ require_relative 'models/tshirts'
 require_relative 'models/orders'
 
 post '/cancel_order' do
-    order = Order.find(params[:id])  
-    shirt = Shirt.find(params[:shirt_id])
+    order = Order.find(params[:order_id].to_i)
+    shirt = Shirt.find(params[:shirt_id].to_i)
 
 
-    qty = shirt.instock + params[:qty]
+    qty = shirt.instock + params[:quantity].to_i
     shirt.update({instock: qty})
     
     order.destroy
@@ -19,23 +19,22 @@ end
 
 
 get '/orders' do
-
     shirts = Shirt.joins(:orders)
     orders = Order.all
     erb :orders, locals: {orders: orders, shirts: shirts}
 end
 
-post '/orders/:id' do
-    id =  params[:id]
-    qty = params[:qty]
-    puts qty
+# post '/orders/:id' do
+#     id =  params[:id]
+#     qty = params[:qty]
+#     puts qty
 
-    shirt = Shirt.find(id)
+#     shirt = Shirt.find(id)
 
-    new_instock = shirt.instock - qty
-    Shirt.update({instock: new_instock})
-    redirect("/shirts")
-end
+#     new_instock = shirt.instock - qty
+#     Shirt.update({instock: new_instock})
+#     redirect("/shirts")
+# end
 
 get '/admin' do
     shirts = Shirt.all
@@ -75,6 +74,14 @@ get '/shirts/:id/edit' do
 end
 
 post '/orders' do
+    id = params[:shirt_id].to_i
+    qty = params[:qty].to_i
+
+    shirt = Shirt.find(id)
+
+    new_instock = shirt.instock.to_i - qty
+    shirt.update({instock: new_instock})
+
     order = Order.create({email: params[:email], shirt_id: params[:shirt_id], quantity: params[:qty]});
     redirect "/receipt/#{order.id}"
 end
@@ -100,6 +107,8 @@ put '/shirts/:id' do
     shirt_image = params[:shirt_image]
 
     shirt.update({price: price, shirt_image: shirt_image, instock: instock})
+
+
 
     redirect('/admin')
 end

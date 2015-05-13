@@ -3,6 +3,7 @@
 <head>
 	<link rel = "stylesheet" type="text/css" href = "/css/styles.css">
 	<title></title>
+	<a href="/shirts">Home</a>
 </head>
 <body>
 	<% shirts.each_with_index do |shirt, index| %>
@@ -29,7 +30,8 @@
 			<option><%= i %></option>
 			<%end%>
 		</select>
-			<button>Buy</button>
+			<button>Buy</button></br>
+			
 		</form>
 	</div>
 	<% end %>

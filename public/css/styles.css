@@ -7,3 +7,9 @@ img {
 .hidden {
   display: none;
 }
+
+li {
+    width: 33%;
+    float: left;
+    list-style-type: none;
+}

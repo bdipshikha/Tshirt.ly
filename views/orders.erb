@@ -17,11 +17,12 @@
         <%= order.email %>
 
         <form method="POST" action="/cancel_order">
-        <input type="hidden" name="shirt_id" value="shirts[i].id">
-        <input type="hidden" value="order.quantity">
-        <input type="hidden" value="order.id"> 
+        <input type="hidden" name="shirt_id" value="<%= shirts[i].id %>">
+        <input type="hidden" name="quantity" value="<%= order.quantity %>">
+        <input type="hidden" name="order_id" value="<%= order.id %>"> 
         <button class="cancel">Cancel and Restock</button>
-    </form>
+        </form>
+
         <button class="ship">Ship</button>
        <% end %>
     </li>
