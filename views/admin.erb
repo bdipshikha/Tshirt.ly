@@ -13,6 +13,7 @@ hi admin
       <input type="hidden" name="_method" value="PUT">
       <input type="text" name="instock" value="<%= shirt.instock %>">
       <input type="text" name="shirt_image" value="<%= shirt.shirt_image %>">
+      <input type="text" name="price" value="<%= shirt.price %>">
       <button>update</button>
     </form>
     <form method="POST" action="/shirts/<%= shirt.id %>">
