@@ -62,10 +62,10 @@ Shirt.create({
 
 
 
-Order.create({
-	quantity: "10",
-	status: "shipped",
-	email: "sajksdjkdsjk@yahoo.com"
-	})
+# Order.create({
+# 	quantity: "10",
+# 	status: "shipped",
+# 	email: "sajksdjkdsjk@yahoo.com"
+# 	})
 
 

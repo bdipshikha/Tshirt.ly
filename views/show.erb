@@ -11,9 +11,9 @@
 		Price: $<%=shirt.price%><br>
 		<img src="<%=shirt.shirt_image%>">
 		<form action="/orders"  method="POST">
-		<input type="hidden" name="color" value="<%=shirt.color%>">
+		<input type="text" name="email" value="" required>
+		<input type="hidden" name="shirt_id" value="<%=shirt.id%>">
 		<input type="hidden" name="price" value="<%=shirt.price%>">
-		<input type="hidden" name="style" value="<%=shirt.color%>">
 		<select name="qty">
 			<% for i in 0..shirt.instock.to_i %>
 			<option><%= i %></option> 

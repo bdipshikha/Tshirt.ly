@@ -8,13 +8,12 @@
 <a href="/admin">Admin</a>
    <div class="orders">
    <ul class="list">
-    <% orders.each do |order| %>
+    <% orders.each_with_index do |order, id| %>
     <li>
-        hello
-        <%= order.id %>
-        <%= order.shirt_id %>
-        <%= order.quantity %>
         <%= order.status %>
+        <%= shirts[id].style %>
+        <%= shirts[id].color %>
+        <%= order.quantity %>
         <%= order.email %>
 
         

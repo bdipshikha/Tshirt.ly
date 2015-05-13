@@ -1,12 +1,14 @@
 require 'sinatra'
 require 'active_record'
+require 'pry'
 require_relative 'models/tshirts'
 require_relative 'models/orders'
 
 get '/orders' do
     
+    shirts = Shirt.joins(:orders)
     orders = Order.all
-    erb :orders, locals: {orders: orders} 
+    erb :orders, locals: {orders: orders, shirts: shirts} 
 end
 
 post '/orders/:id' do
@@ -62,7 +64,7 @@ post '/orders' do
     # status TEXT,
     # created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 
-    order = Order.create({email: params[:email], shirt_id: params[:shirt_id], quantity: params[:quantity]});
+    order = Order.create({email: params[:email], shirt_id: params[:shirt_id], quantity: params[:qty]});
     redirect "/receipt/#{order.id}"
 end
 
