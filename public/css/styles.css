@@ -2,6 +2,11 @@
 img {
 	/*width: 150px;*/
 	height: 200px;
+	padding: 10px;
+	/*border-width: 50px;
+	border-color: black;*/
+	border: 3px solid #500000;
+	background-color: white;
 }
 
 .hidden {
@@ -12,4 +17,20 @@ li {
     width: 33%;
     float: left;
     list-style-type: none;
+  }
+
+h1 {
+	text-align: center;
+	color: #500000;
+	font-family: chalkduster;
+	font-size: 40px;
+}
+
+body {
+	background-image: url(http://luchitashudson.com/wp-content/themes/responsivepro-child/images/background.png);
+}
+
+nav {
+	background-color: tan;
+	position: fixed;
 }
