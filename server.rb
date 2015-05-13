@@ -1,5 +1,5 @@
 require 'sinatra'
-require 'ActiveRecord'
+require 'active_record'
 require_relative 'models/tshirts'
 
 get '/admin' do
@@ -31,7 +31,7 @@ post '/shirts' do
     color = params[:color]
     price = params[:price]
     shirt_image = params[:image]
-            end
+end
 
 put '/shirts/:id' do 
     shirt = Shirt.find(params[:id])
