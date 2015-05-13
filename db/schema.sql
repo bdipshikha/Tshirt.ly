@@ -3,6 +3,7 @@ CREATE TABLE IF NOT EXISTS shirts (
 	style TEXT,
 	color TEXT,
 	instock INTEGER,
+	price INTEGER,
 	shirt_image TEXT,
 	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
