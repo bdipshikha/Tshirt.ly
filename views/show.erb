@@ -10,7 +10,7 @@
 		In Stock: <%=shirt.instock%><br>
 		Price: $<%=shirt.price%><br>
 		<img src="<%=shirt.shirt_image%>">
-		<form action="/orders/<%=shirt.id%>"  method="POST">
+		<form action="/orders"  method="POST">
 		<input type="hidden" name="color" value="<%=shirt.color%>">
 		<input type="hidden" name="price" value="<%=shirt.price%>">
 		<input type="hidden" name="style" value="<%=shirt.color%>">
