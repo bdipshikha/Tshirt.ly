@@ -4,6 +4,8 @@ require_relative 'models/tshirts'
 require_relative 'models/orders'
 
 get '/orders' do
+    
+    orders = Order.all
     erb :orders, locals: {orders: orders} 
 end
 
