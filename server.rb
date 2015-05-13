@@ -5,11 +5,24 @@ require 'cgi'
 require_relative 'models/tshirts'
 require_relative 'models/orders'
 
-get '/orders' do
+post '/cancel_order' do
+    order = Order.find(params[:id])  
+    shirt = Shirt.find(params[:shirt_id])
+
+
+    qty = shirt.instock + params[:qty]
+    shirt.update({instock: qty})
     
+    order.destroy
+    redirect('/admin')
+end
+
+
+get '/orders' do
+
     shirts = Shirt.joins(:orders)
     orders = Order.all
-    erb :orders, locals: {orders: orders, shirts: shirts} 
+    erb :orders, locals: {orders: orders, shirts: shirts}
 end
 
 post '/orders/:id' do
@@ -18,9 +31,9 @@ post '/orders/:id' do
     puts qty
 
     shirt = Shirt.find(id)
-   
+
     new_instock = shirt.instock - qty
-    Shirt.update({instock: new_instock}) 
+    Shirt.update({instock: new_instock})
     redirect("/shirts")
 end
 
@@ -29,7 +42,7 @@ get '/admin' do
     erb :admin, locals: {shirts: shirts}
 end
 
-get '/' do 
+get '/' do
     redirect '/shirts'
 end
 
@@ -74,33 +87,32 @@ post '/orders' do
 end
 
 
-post '/shirts' do 
+post '/shirts' do
     style = params[:style]
     color = params[:color]
     price = params[:price]
     instock = params[:instock]
     shirt_image = params[:shirt_image]
-    
+
     Shirt.create({style: style, color: color, price: price, instock: instock, shirt_image: shirt_image})
     redirect('/admin')
 end
 
-put '/shirts/:id' do 
+put '/shirts/:id' do
     shirt = Shirt.find(params[:id])
-    
+
     price = params[:price]
     instock = params[:instock]
-    
+
     shirt_image = params[:shirt_image]
-    
+
     shirt.update({price: price, shirt_image: shirt_image, instock: instock})
-    
+
     redirect('/admin')
 end
-        
-delete '/shirts/:id' do 
+
+delete '/shirts/:id' do
     shirt = Shirt.find(params[:id])
     shirt.destroy
     redirect('/admin')
 end
-
