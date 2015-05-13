@@ -23,5 +23,33 @@ hi admin
   </li>
 <% end %>
 </ul>
+
+<form method="POST" action="/shirts">
+  <ul>
+    <li>
+      <label for="style">Style</label>
+      <input type="text" name="style">
+    </li>
+    <li>
+      <label for="color">Color</label>
+      <input type="text" name="color">
+    </li>
+    <li>
+      <label for="qty">Quantity</label>
+      <input type="text" name="qty">
+    </li>
+    <li>
+      <label for="shirt_image">Image Url</label>
+      <input type="text" name="shirt_image">
+    </li>
+    <li>
+      <label for="price">Price</label>
+      <input type="text" name="price">
+    </li>
+    <li>
+      <button>Add</button>
+    </li>
+  </ul>
+</form>
 </body>
 </html>
