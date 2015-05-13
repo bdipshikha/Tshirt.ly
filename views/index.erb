@@ -10,7 +10,7 @@
 	<ul>
 	<% shirts.each do |shirt| %>
 	<li>
-	<a href = "/shirts/<%= shirt.id %>">
+	<a href = "/shirts/<%= CGI.escape(shirt.style) %>">
 	 <img src="<%= shirt.shirt_image %>"></a></br>
 	 <%= shirt.style %>
 	<% end %>
