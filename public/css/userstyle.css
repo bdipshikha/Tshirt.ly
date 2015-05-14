@@ -14,10 +14,7 @@ li {
     width: 100%;
     float: left;
     list-style-type: none;
-<<<<<<< HEAD
 }
-=======
-  }
 @media (min-width: 650px) {
   li {
     width: 50%;
@@ -114,4 +111,3 @@ img.soldoutimg {
 
 
 
->>>>>>> c7a612c47799e3991070b8717bf56fd4c936e225

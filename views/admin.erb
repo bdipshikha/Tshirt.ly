@@ -9,6 +9,7 @@
 <nav>
 <a href="/orders">Orders</a>
 </nav>
+<h2>Current Stock</h2>
 <table>
 <thead>
     <tr>
@@ -21,12 +22,12 @@
 </thead>
 <% shirts.each do |shirt| %>
   <tr>
-    <td><%= shirt.style %></td>
-    <td><%= shirt.color %></td>
     <form method="POST" action="/shirts/<%= shirt.id %>">
+      <td><input type="text" name="style" value="<%= shirt.style %>" size="15" onblur="submit()"></td>
+      <td><input type="text" name="color" value="<%= shirt.color %>" size="10" onblur="submit()"></td>
       <input type="hidden" name="_method" value="PUT">
       <td><input type="text" name="instock" value="<%= shirt.instock %>" size="5" onblur="submit()"></td>
-      <td><input type="text" name="shirt_image" value="<%= shirt.shirt_image %>" size="20" onblur="submit()"></td>
+      <td><input type="text" name="shirt_image" value="<%= shirt.shirt_image %>" size="40" onblur="submit()"></td>
       <td><input type="text" name="price" value="<%= shirt.price %>" size="5" onblur="submit()"></td>
     </form>
     <td><form method="POST" action="/shirts/<%= shirt.id %>">
@@ -37,32 +38,33 @@
 <% end %>
 </table>
 
+<h2>Add New Shirt Type</h2>
 <form method="POST" action="/shirts">
-  <ul>
-    <li>
-      <label for="style">Style</label>
-      <input type="text" name="style">
-    </li>
-    <li>
-      <label for="color">Color</label>
-      <input type="text" name="color">
-    </li>
-    <li>
-      <label for="instock">Quantity</label>
-      <input type="text" name="instock">
-    </li>
-    <li>
-      <label for="shirt_image">Image Url</label>
-      <input type="text" name="shirt_image">
-    </li>
-    <li>
-      <label for="price">Price</label>
-      <input type="text" name="price">
-    </li>
-    <li>
-      <button>Add</button>
-    </li>
-  </ul>
+  <table>
+    <tr>
+      <td class="alignright"><label for="style">Style</label></td>
+      <td><input type="text" name="style"></td>
+    </tr>
+    <tr>
+      <td class="alignright"><label for="color">Color</label></td>
+      <td><input type="text" name="color"></td>
+    </tr>
+    <tr>
+      <td class="alignright"><label for="instock">Quantity</label></td>
+      <td><input type="text" name="instock"></td>
+    </tr>
+    <tr>
+      <td class="alignright"><label for="shirt_image">Image Url</label></td>
+      <td><input type="text" name="shirt_image"></td>
+    </tr>
+    <tr>
+      <td class="alignright"><label for="price">Price</label></td>
+      <td><input type="text" name="price"></td>
+    </tr>
+    <tr>
+      <td class="alignright" colspan="2"><button>Add</button></td>
+    </tr>
+  </table>
 </form>
 </body>
 </html>

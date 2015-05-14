@@ -5,6 +5,7 @@ require 'cgi'
 require_relative 'models/tshirts'
 require_relative 'models/orders'
 
+# so sinatra will work in non-localhost situations
 set :bind, '0.0.0.0'
 
 post '/cancel_order' do
@@ -101,14 +102,13 @@ end
 put '/shirts/:id' do
     shirt = Shirt.find(params[:id])
 
-    price = params[:price]
-    instock = params[:instock]
-
-    shirt_image = params[:shirt_image]
-
-    shirt.update({price: price, shirt_image: shirt_image, instock: instock})
-
-
+    shirt.update({
+        style: params[:style],
+        color: params[:color],
+        price: params[:price],
+        shirt_image: params[:shirt_image],
+        instock: params[:instock]
+    })
 
     redirect('/admin')
 end
