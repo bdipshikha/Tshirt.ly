@@ -20,17 +20,19 @@
     </tr>
 </thead>
 <% shirts.each do |shirt| %>
-    <tr><td><%= shirt.style %></td> - <td><%= shirt.color %></td>
+  <tr>
+    <td><%= shirt.style %></td>
+    <td><%= shirt.color %></td>
     <form method="POST" action="/shirts/<%= shirt.id %>">
-        <td><input type="hidden" name="_method" value="PUT"></td>
+      <input type="hidden" name="_method" value="PUT">
       <td><input type="text" name="instock" value="<%= shirt.instock %>" size="5" onblur="submit()"></td>
-        <td><input type="text" name="shirt_image" value="<%= shirt.shirt_image %>" size="20" onblur="submit()"></td>
-        <td><input type="text" name="price" value="<%= shirt.price %>" size="5" onblur="submit()"></td>
+      <td><input type="text" name="shirt_image" value="<%= shirt.shirt_image %>" size="20" onblur="submit()"></td>
+      <td><input type="text" name="price" value="<%= shirt.price %>" size="5" onblur="submit()"></td>
     </form>
-    <form method="POST" action="/shirts/<%= shirt.id %>">
-        <td><input type="hidden" name="_method" value="DELETE"></td>
-        <td><button>delete</button></td>
-    </form>
+    <td><form method="POST" action="/shirts/<%= shirt.id %>">
+      <input type="hidden" name="_method" value="DELETE">
+      <button>delete</button>
+    </form></td>
   </tr>
 <% end %>
 </table>

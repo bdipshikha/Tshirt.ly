@@ -6,34 +6,36 @@
     <link rel= "stylesheet" type= "text/css" href="/css/adminstyle.css">
 </head>
 <body>
-    <a href="/admin">Admin</a>
-   <div class="orders">
-   <ul class="list">
-    <% orders.each_with_index do |order, i| %>
-    <li>
-        <%= order.status %>
-        <%= shirts[i].style %>
-        <%= shirts[i].color %>
-        <%= order.quantity %>
-        <%= order.email %>
+    <nav>
+        <a href="/admin">Stock</a>
+    </nav>
+    <div class="orders">
+        <table>
+            <% orders.each_with_index do |order, i| %>
+            <tr>
+                <td><%= order.status %></td>
+                <td><%= shirts[i].style %></td>
+                <td><%= shirts[i].color %></td>
+                <td><%= order.quantity %></td>
+                <td><%= order.email %></td>
 
-        <form method="POST" action="/cancel_order">
-        <input type="hidden" name="shirt_id" value="<%= shirts[i].id %>">
-        <input type="hidden" name="quantity" value="<%= order.quantity %>">
-        <input type="hidden" name="order_id" value="<%= order.id %>"> 
-        <button class="cancel">Cancel and Restock</button>
-        </form>
-        <% if order.status != "shipped" %>
-        <form method="POST" action="/shipped_order">
-        <input type="hidden" name="_method" value="PUT">
-        <input type="hidden" name="order_id" value="<%= order.id %>">
-        <button class="ship">Ship</button>
-        </form>
-        <% end %>
-       <% end %>
-    </li>
-    
-    </ul>
+                <% if order.status != "shipped" %>
+                <form method="POST" action="/cancel_order">
+                <input type="hidden" name="shirt_id" value="<%= shirts[i].id %>">
+                <input type="hidden" name="quantity" value="<%= order.quantity %>">
+                <input type="hidden" name="order_id" value="<%= order.id %>"> 
+                <td><button class="cancel">Cancel and Restock</button></td>
+                </form>
+                <form method="POST" action="/shipped_order">
+                <input type="hidden" name="_method" value="PUT">
+                <input type="hidden" name="order_id" value="<%= order.id %>">
+                <td><button class="ship">Ship</button></td>
+                </form>
+                <% end %>
+            </tr>
+            <% end %>
+            
+        </table>
     </div>
 
 </body>
