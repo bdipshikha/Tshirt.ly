@@ -17,6 +17,13 @@ post '/cancel_order' do
     redirect('/admin')
 end
 
+put '/shipped_order' do 
+    order = Order.find(params[:order_id].to_i)
+    status = "shipped"
+    order.update({status: status})
+    redirect("/orders")
+end
+
 
 get '/orders' do
     shirts = Shirt.joins(:orders)

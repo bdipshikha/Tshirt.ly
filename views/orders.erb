@@ -22,8 +22,13 @@
         <input type="hidden" name="order_id" value="<%= order.id %>"> 
         <button class="cancel">Cancel and Restock</button>
         </form>
-
+        <% if order.status != "shipped" %>
+        <form method="POST" action="/shipped_order">
+        <input type="hidden" name="_method" value="PUT">
+        <input type="hidden" name="order_id" value="<%= order.id %>">
         <button class="ship">Ship</button>
+        </form>
+        <% end %>
        <% end %>
     </li>
     
