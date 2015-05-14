@@ -40,10 +40,11 @@ get '/' do
     redirect '/shirts'
 end
 
-get '/receipt/:order_id' do
 
-    # shirts = Shirt.joins(:orders).where()
-    erb :receipt
+get '/receipt/:order_id' do
+    shirt = Shirt.joins(:orders).where('orders.id' => params[:order_id])[0]
+    order = Order.find(params[:order_id])
+    erb :receipt, locals: {shirt: shirt, order: order}
 end
 
 get '/shirts' do 
