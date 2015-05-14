@@ -6,26 +6,26 @@
   <title>Admin</title>
 </head>
 <body>
-<table>
 <nav>
 <a href="/orders">Orders</a>
 </nav>
-<ul>
+<table>
 <% shirts.each do |shirt| %>
-  <li><%= shirt.style %> - <%= shirt.color %>
+  <tr>
+    <td><%= shirt.style %></td>
+    <td><%= shirt.color %></td>
     <form method="POST" action="/shirts/<%= shirt.id %>">
       <input type="hidden" name="_method" value="PUT">
-      <input type="text" name="instock" value="<%= shirt.instock %>" size="5" onblur="submit()">
-      <input type="text" name="shirt_image" value="<%= shirt.shirt_image %>" size="20" onblur="submit()">
-      <input type="text" name="price" value="<%= shirt.price %>" size="5" onblur="submit()">
+      <td><input type="text" name="instock" value="<%= shirt.instock %>" size="5" onblur="submit()"></td>
+      <td><input type="text" name="shirt_image" value="<%= shirt.shirt_image %>" size="20" onblur="submit()"></td>
+      <td><input type="text" name="price" value="<%= shirt.price %>" size="5" onblur="submit()"></td>
     </form>
-    <form method="POST" action="/shirts/<%= shirt.id %>">
+    <td><form method="POST" action="/shirts/<%= shirt.id %>">
       <input type="hidden" name="_method" value="DELETE">
       <button>delete</button>
-    </form>
-  </li>
+    </form></td>
+  </tr>
 <% end %>
-</ul>
 </table>
 
 <form method="POST" action="/shirts">

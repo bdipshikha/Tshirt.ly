@@ -10,32 +10,32 @@
         <a href="/admin">Stock</a>
     </nav>
     <div class="orders">
-        <ul class="list">
+        <table>
             <% orders.each_with_index do |order, i| %>
-            <li>
-                <%= order.status %>
-                <%= shirts[i].style %>
-                <%= shirts[i].color %>
-                <%= order.quantity %>
-                <%= order.email %>
+            <tr>
+                <td><%= order.status %></td>
+                <td><%= shirts[i].style %></td>
+                <td><%= shirts[i].color %></td>
+                <td><%= order.quantity %></td>
+                <td><%= order.email %></td>
 
+                <% if order.status != "shipped" %>
                 <form method="POST" action="/cancel_order">
                 <input type="hidden" name="shirt_id" value="<%= shirts[i].id %>">
                 <input type="hidden" name="quantity" value="<%= order.quantity %>">
                 <input type="hidden" name="order_id" value="<%= order.id %>"> 
-                <button class="cancel">Cancel and Restock</button>
+                <td><button class="cancel">Cancel and Restock</button></td>
                 </form>
-                <% if order.status != "shipped" %>
                 <form method="POST" action="/shipped_order">
                 <input type="hidden" name="_method" value="PUT">
                 <input type="hidden" name="order_id" value="<%= order.id %>">
-                <button class="ship">Ship</button>
+                <td><button class="ship">Ship</button></td>
                 </form>
                 <% end %>
-            </li>
+            </tr>
             <% end %>
             
-        </ul>
+        </table>
     </div>
 
 </body>
