@@ -23,7 +23,7 @@
         <p><%= shirt.style %></p>
         <p><%= shirt.color %></p>
         <p><%= order.quantity %></p>
-        <p>$<%= sprintf('%.2f', order.quantity.to_i * shirt.price.to_i) %></p>
+        <p>$<%= sprintf('%.2f', order.quantity.to_i * shirt.price.to_f) %></p>
       </div>
     </div>
   </div>
