@@ -5,6 +5,8 @@ require 'cgi'
 require_relative 'models/tshirts'
 require_relative 'models/orders'
 
+set :bind, '0.0.0.0'
+
 post '/cancel_order' do
     order = Order.find(params[:order_id].to_i)
     shirt = Shirt.find(params[:shirt_id].to_i)
