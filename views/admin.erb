@@ -14,10 +14,9 @@
   <li><%= shirt.style %> - <%= shirt.color %>
     <form method="POST" action="/shirts/<%= shirt.id %>">
       <input type="hidden" name="_method" value="PUT">
-      <input type="text" name="instock" value="<%= shirt.instock %>">
-      <input type="text" name="shirt_image" value="<%= shirt.shirt_image %>">
-      <input type="text" name="price" value="<%= shirt.price %>">
-      <button>update</button>
+      <input type="text" name="instock" value="<%= shirt.instock %>" size="5" onblur="submit()">
+      <input type="text" name="shirt_image" value="<%= shirt.shirt_image %>" size="20" onblur="submit()">
+      <input type="text" name="price" value="<%= shirt.price %>" size="5" onblur="submit()">
     </form>
     <form method="POST" action="/shirts/<%= shirt.id %>">
       <input type="hidden" name="_method" value="DELETE">

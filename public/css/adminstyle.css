@@ -25,10 +25,10 @@ a {
 }
 
 ul {
- list-style-type: none;
+    list-style-type: none;
 }
 
 input {
- border-radius: 5px;
-box-shadow: 1px 2px 1px #900;    
+    border-radius: 5px;
+    box-shadow: 1px 2px 1px #900;
 }
