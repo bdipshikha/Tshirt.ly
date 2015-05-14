@@ -3,8 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <title>Thanks</title>
+  <link rel = "stylesheet" type="text/css" href = "/css/styles.css">
 </head>
 <body>
-  yo come back soon!
+  <nav>
+  <a href="/shirts">Home</a>
+  </nav>
+  <h1>Thank you for your purchase</h1>
+  <div class="receiptdiv">
+    <img src="<%= shirt.shirt_image %>">
+    <div class="receipttext">
+      <div class="receiptleft">
+        <p>style:    </p>
+        <p>color:    </p>
+        <p>quantity: </p>
+        <p>total:    </p>
+      </div>
+      <div class="receiptright">
+        <p><%= shirt.style %></p>
+        <p><%= shirt.color %></p>
+        <p><%= order.quantity %></p>
+        <p>$<%= sprintf('%.2f', order.quantity.to_i * shirt.price.to_i) %></p>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

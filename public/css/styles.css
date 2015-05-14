@@ -1,7 +1,9 @@
 
 img {
-	/*width: 150px;*/
 	height: 200px;
+	padding: 10px;
+	border: 3px solid #500000;
+	background-color: white;
 }
 
 .hidden {
@@ -9,7 +11,107 @@ img {
 }
 
 li {
-    width: 33%;
+    width: 100%;
     float: left;
     list-style-type: none;
+<<<<<<< HEAD
 }
+=======
+  }
+@media (min-width: 650px) {
+  li {
+    width: 50%;
+  }
+}
+@media (min-width: 860px) {
+  li {
+    width: 33%;
+  }
+}
+
+h1 {
+	text-align: center;
+	color: #500000;
+	font-family: chalkduster;
+	font-size: 40px;
+}
+
+body {
+	background-image: url(http://luchitashudson.com/wp-content/themes/responsivepro-child/images/background.png);
+	color: #500000;
+	font-size: 20px;
+}
+
+/*nav {
+	background-color: tan;
+	position: fixed;
+}*/
+
+a {
+	font-size: 20px;
+	color:#500000;
+}
+
+.shirtdiv {
+	text-align: center;
+}
+
+button {
+	border: 5px;
+	border-color: tan; 
+	background-color: #500000;
+	color: tan;
+	font-size: 17px;
+}
+
+div.receiptdiv {
+  text-align: center;
+}
+div.receipttext {
+  display: inline-block;
+  padding: 0px 20px;
+  position: relative;
+  top: -40px;
+}
+div.receiptleft {
+  display: inline-block;
+  text-align: right;
+}
+div.receiptright {
+  display: inline-block;
+  text-align: left;
+}
+
+div.centerer {
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: 50%;
+  top: 50%;
+}
+
+img.soldoutimg {
+  height: 80px;
+  position: absolute;
+  border: 0px;
+  left:-125px;
+  top:-75px;
+  background-color: rgba(255,255,255,0);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> c7a612c47799e3991070b8717bf56fd4c936e225

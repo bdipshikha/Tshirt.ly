@@ -2,10 +2,11 @@
 <html>
 <head>
 	<link rel = "stylesheet" type="text/css" href = "/css/styles.css">
-	<title></title>
-	<a href="/shirts">Home</a>
 </head>
 <body>
+	<nav>
+	<a href="/shirts">Home</a>
+	</nav>
 	<% shirts.each_with_index do |shirt, index| %>
 	<div class="shirtdiv hidden" id="shirt<%= index %>">
 		<h1><%=shirt.style%></h1>
@@ -20,7 +21,12 @@
 		<br>
 		In Stock: <%=shirt.instock%><br>
 		Price: $<%=shirt.price%><br>
-		<img src="<%=shirt.shirt_image%>">
+		<img class="img_show" src="<%=shirt.shirt_image%>">
+		<% if shirt.instock == 0 %>
+		<div class="centerer">
+			<img class="soldoutimg" src="/images/sold-outsmall.png">
+		</div>
+		<% end %>
 		<form action="/orders"  method="POST">
 		<ul class="purchaseformlist">
 		<label for="email">email</label>
@@ -35,7 +41,7 @@
 				<%end%>
 			</select>
 		
-		<button>Buy</button></br>
+		<button <% if shirt.instock == 0 %>disabled<% end %>>Buy</button></br>
 			
 		</form>
 	</div>

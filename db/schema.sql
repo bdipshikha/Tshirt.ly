@@ -16,3 +16,8 @@ CREATE TABLE IF NOT EXISTS orders (
 	status TEXT DEFAULT "purchased",
 	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+
+CREATE TRIGGER shirt_delete_trig BEFORE DELETE ON shirts BEGIN
+  DELETE FROM orders WHERE shirt_id = OLD.id;
+END;

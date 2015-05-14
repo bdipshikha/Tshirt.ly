@@ -17,24 +17,19 @@ post '/cancel_order' do
     redirect('/admin')
 end
 
+put '/shipped_order' do 
+    order = Order.find(params[:order_id].to_i)
+    status = "shipped"
+    order.update({status: status})
+    redirect("/orders")
+end
+
 
 get '/orders' do
     shirts = Shirt.joins(:orders)
     orders = Order.all
     erb :orders, locals: {orders: orders, shirts: shirts}
 end
-
-# post '/orders/:id' do
-#     id =  params[:id]
-#     qty = params[:qty]
-#     puts qty
-
-#     shirt = Shirt.find(id)
-
-#     new_instock = shirt.instock - qty
-#     Shirt.update({instock: new_instock})
-#     redirect("/shirts")
-# end
 
 get '/admin' do
     shirts = Shirt.all
@@ -45,8 +40,11 @@ get '/' do
     redirect '/shirts'
 end
 
-get '/receipt/:id' do
-    erb :receipt
+
+get '/receipt/:order_id' do
+    shirt = Shirt.joins(:orders).where('orders.id' => params[:order_id])[0]
+    order = Order.find(params[:order_id])
+    erb :receipt, locals: {shirt: shirt, order: order}
 end
 
 get '/shirts' do 
