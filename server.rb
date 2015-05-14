@@ -32,7 +32,7 @@ get '/orders' do
 end
 
 get '/admin' do
-    shirts = Shirt.all
+    shirts = Shirt.all.order(:style).order(:color)
     erb :admin, locals: {shirts: shirts}
 end
 
