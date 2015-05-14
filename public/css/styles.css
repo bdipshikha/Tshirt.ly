@@ -1,10 +1,7 @@
 
 img {
-	/*width: 150px;*/
 	height: 200px;
 	padding: 10px;
-	/*border-width: 50px;
-	border-color: black;*/
 	border: 3px solid #500000;
 	background-color: white;
 }
@@ -28,9 +25,49 @@ h1 {
 
 body {
 	background-image: url(http://luchitashudson.com/wp-content/themes/responsivepro-child/images/background.png);
+	color: #500000;
+	font-size: 20px;
 }
 
-nav {
+/*nav {
 	background-color: tan;
 	position: fixed;
+}*/
+
+a {
+	font-size: 20px;
+	color:#500000;
 }
+
+.shirtdiv {
+	text-align: center;
+}
+
+button {
+	border: 5px;
+	border-color: tan; 
+	background-color: #500000;
+	color: tan;
+	font-size: 17px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
