@@ -11,10 +11,20 @@ img {
 }
 
 li {
-    width: 33%;
+    width: 100%;
     float: left;
     list-style-type: none;
   }
+@media (min-width: 650px) {
+  li {
+    width: 50%;
+  }
+}
+@media (min-width: 860px) {
+  li {
+    width: 33%;
+  }
+}
 
 h1 {
 	text-align: center;
@@ -51,10 +61,40 @@ button {
 	font-size: 17px;
 }
 
+div.receiptdiv {
+  text-align: center;
+}
+div.receipttext {
+  display: inline-block;
+  padding: 0px 20px;
+  position: relative;
+  top: -40px;
+}
+div.receiptleft {
+  display: inline-block;
+  text-align: right;
+}
+div.receiptright {
+  display: inline-block;
+  text-align: left;
+}
 
+div.centerer {
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: 50%;
+  top: 50%;
+}
 
-
-
+img.soldoutimg {
+  height: 80px;
+  position: absolute;
+  border: 0px;
+  left:-125px;
+  top:-75px;
+  background-color: rgba(255,255,255,0);
+}
 
 
 
