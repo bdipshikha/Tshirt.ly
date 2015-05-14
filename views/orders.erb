@@ -11,6 +11,15 @@
     </nav>
     <div class="orders">
         <table>
+            <thead>
+                <tr>
+                    <th>Status</th>
+                    <th>Style</th>
+                    <th>Color</th>
+                    <th>Quantity</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
             <% orders.each_with_index do |order, i| %>
             <tr>
                 <td><%= order.status %></td>
