@@ -1,0 +1,34 @@
+body {
+    background-image: url(http://i.imgur.com/7TEsWys.jpg?1);
+    background-size: 100% 100%;
+    padding-top: 50px;
+    margin: 0px auto;
+    color: azure;
+}
+
+nav {
+    position: fixed;
+    top: 0px;
+    height: 35px;
+    background-color: rgba(0, 0, 0, 0.9);
+    text-align: right;
+    width: 100%;
+    margin: 0px auto;
+    padding-top: 10px;
+    box-shadow: 1px 1px 1px #800;
+}
+
+a {
+    text-decoration: none;
+    color: azure;
+    padding-right: 15px;
+}
+
+ul {
+ list-style-type: none;
+}
+
+input {
+ border-radius: 5px;
+box-shadow: 1px 2px 1px #900;    
+}

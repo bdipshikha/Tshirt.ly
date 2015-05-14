@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+ <link rel= "stylesheet" type= "text/css" href="/css/style.css">
   <meta charset="UTF-8">
-  <title>Document</title>
+  <title>Admin</title>
 </head>
 <body>
+<nav>
 <a href="/orders">Orders</a>
+</nav>
 <ul>
 <% shirts.each do |shirt| %>
   <li><%= shirt.style %> - <%= shirt.color %>
